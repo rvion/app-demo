@@ -12,7 +12,9 @@
     "mobx": "^5.5.0",
     "mobx-react": "^5.2.8",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-google-maps": "^9.4.5",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.14",

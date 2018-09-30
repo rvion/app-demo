@@ -1,13 +1,10 @@
 # appli de demo
 
-server
-client
-base de donne
-
-```
+```sh
 docker run \
     -it \
     --rm \
+    --name demo-app \
     --net=host \
     -v /home/rvion/dev/app-web:/app \
     --workdir /app \
@@ -15,13 +12,11 @@ docker run \
     bash
 ```
 
-----
-
+```sh
+npm install
+./node_modules/.bin/parcel ./public/index.html
+```
 
 javascript
-cote client: rien 
-cote server: node
-
-------------
 node
 npm: node package manager

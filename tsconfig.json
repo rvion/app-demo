@@ -1,0 +1,15 @@
+{
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "compilerOptions": {
+        // "noImplicitAny": true,
+        "strictNullChecks": true,
+        "module": "commonjs",
+        "target": "es6",
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "lib": ["es2017", "dom"]
+    }
+}
