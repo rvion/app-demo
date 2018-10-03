@@ -1,2 +1,2 @@
 #!/bin/bash
-./node_modules/.bin/parcel ./public/index.html
+./node_modules/.bin/parcel ./src/index.html
