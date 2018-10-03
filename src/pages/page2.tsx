@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { store } from '../core/state'
 import { ajax } from '../core/utils'
+import { observer } from 'mobx-react'
 
 type LoginInfos = {
     username: string
     password: string
 }
+
+@observer
 export class Page2 extends React.Component<{}, LoginInfos> {
     constructor(props) {
         super(props)
@@ -15,8 +18,13 @@ export class Page2 extends React.Component<{}, LoginInfos> {
         }
     }
     render() {
-        if (store.auth) {
-            return 'connected'
+        if (store.auth != null) {
+            return (
+                <div>
+                    <h2>connected</h2>
+                    <pre>{JSON.stringify(store.auth, null, 4)}</pre>
+                </div>
+            )
         }
         return (
             <div>
@@ -50,6 +58,7 @@ export class Page2 extends React.Component<{}, LoginInfos> {
                                 console.log('Well done!')
                                 console.log('User profile', auth.user)
                                 console.log('User token', auth.jwt)
+                                store.auth = auth
                             },
                             fail: function(error) {
                                 console.log('An error occurred:', error)
