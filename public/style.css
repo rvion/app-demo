@@ -1,8 +1,15 @@
 h1 {
     background: green;
 }
-
-.card{
+label {
+    display: block;
+}
+input,
+label {
+    line-height: 30px;
+    margin: 2px;
+}
+.card {
     border: 1px solid black;
     margin: 2px;
     border-radius: 10px;
