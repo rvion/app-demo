@@ -20,3 +20,8 @@ npm install
 javascript
 node
 npm: node package manager
+
+```sh
+alias drun2='docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):/app -w /app --net=host'
+alias start='drun2 node ./node_modules/.bin/parcel ./public/index.html'
+```
