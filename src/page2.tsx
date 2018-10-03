@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { store } from '../core/state'
-import { ajax } from '../core/utils'
+import { store } from './store'
 import { observer } from 'mobx-react'
 
 type LoginInfos = {
@@ -18,6 +17,8 @@ export class Page2 extends React.Component<{}, LoginInfos> {
         }
     }
     render() {
+        // if already connected,
+        // show account infos
         if (store.auth != null) {
             return (
                 <div>
@@ -26,6 +27,8 @@ export class Page2 extends React.Component<{}, LoginInfos> {
                 </div>
             )
         }
+        // else, if not connected,
+        // show the connection widget
         return (
             <div>
                 <h2>Page2: Login</h2>
@@ -46,25 +49,7 @@ export class Page2 extends React.Component<{}, LoginInfos> {
                     />
                 </label>
                 <button
-                    onClick={() => {
-                        ajax({
-                            type: 'POST',
-                            url: `http://${window.location.hostname}:1337/auth/local`,
-                            data: {
-                                identifier: this.state.username,
-                                password: this.state.password
-                            },
-                            done: function(auth) {
-                                console.log('Well done!')
-                                console.log('User profile', auth.user)
-                                console.log('User token', auth.jwt)
-                                store.auth = auth
-                            },
-                            fail: function(error) {
-                                console.log('An error occurred:', error)
-                            }
-                        })
-                    }}
+                    onClick={() => store.login(this.state.username, this.state.password)}
                 >
                     Log in as {this.state.username}
                 </button>

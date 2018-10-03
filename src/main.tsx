@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import { observer } from 'mobx-react'
-import { store } from './core/state'
+import { store } from './store'
 
-import { Page1 } from './pages/page1'
-import { Page2 } from './pages/page2'
-import { Page3 } from './pages/page3'
+import { Page1 } from './page1'
+import { Page2 } from './page2'
+import { Page3 } from './page3'
 
 @observer
 class Main extends React.Component {
