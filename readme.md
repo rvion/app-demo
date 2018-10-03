@@ -27,7 +27,7 @@ docker run -e APP_NAME=strapi-app \
 
 https://strapi.io/documentation/
 
-## 3. client app
+## 3. client app (react / mobx / typescript)
 
 ```sh
 docker build --tag demo .

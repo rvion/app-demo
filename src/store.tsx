@@ -24,7 +24,7 @@ class Store {
     }
 
     @action
-    fetchBeards() {
+    fetchBoards() {
         if (this.auth == null) return console.warn('not connected')
         ajax({
             type: 'GET',

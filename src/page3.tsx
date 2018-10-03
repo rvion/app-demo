@@ -6,14 +6,14 @@ import { observer } from 'mobx-react'
 export class Page3 extends React.Component {
     constructor(props) {
         super(props)
-        if (store.beards.length === 0) store.fetchBeards()
+        if (store.beards.length === 0) store.fetchBoards()
     }
 
     render() {
         return (
             <div>
                 <h2>Barbes</h2>
-                <button onClick={() => store.fetchBeards()}>Fetch</button>
+                <button onClick={() => store.fetchBoards()}>Fetch</button>
                 <ul>
                     {store.beards.map(beard => {
                         return (
