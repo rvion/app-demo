@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Card } from '../card'
+import { Card } from '../widgets/card'
 
 export class Page1 extends React.Component {
     render() {
