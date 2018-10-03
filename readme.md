@@ -27,6 +27,8 @@ docker run -e APP_NAME=strapi-app \
            --name strapi -d strapi/strapi
 ```
 
+https://strapi.io/documentation/
+
 ## 2. client app
 
 ```sh
