@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { store } from '../core/state'
+import { ajax } from '../core/utils'
 
 type LoginInfos = {
     username: string
@@ -61,31 +62,4 @@ export class Page2 extends React.Component<{}, LoginInfos> {
             </div>
         )
     }
-}
-
-// helper function to ease copy-pasting code from strapi-doc
-// like in page https://strapi.io/documentation/guides/authentication.html#register-a-new-user
-function ajax(a: {
-    type: 'POST' | 'GET'
-    url: string
-    data?: Object
-    done: (Object) => any
-    fail: (any) => any
-}) {
-    const opts: any = {
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        cache: 'no-cache',
-        credentials: 'include'
-    }
-    if (a.data) opts.body = JSON.stringify(a.data)
-    if (a.type) opts.method = a.type
-    console.log('[ajax] fetching', a.url, opts)
-    fetch(a.url, opts)
-        .then(response => {
-            //www.tjvantoll.com/2015/09/13/fetch-and-errors/
-            https: if (!response.ok) throw Error(response.statusText)
-            return response.json()
-        })
-        .then(a.done)
-        .catch(a.fail)
 }
