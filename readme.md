@@ -1,10 +1,6 @@
 # appli de demo
 
-## 1. strapi
-
-from: https://github.com/strapi/strapi-docker
-
-Start a database
+## 1. DB (mongodb)
 
 ```sh
 docker run -e MONGO_INITDB_DATABASE=strapi \
@@ -13,7 +9,9 @@ docker run -e MONGO_INITDB_DATABASE=strapi \
            -d mongo
 ```
 
-Start strapi
+## 2. Strapi (backend api server)
+
+from: https://github.com/strapi/strapi-docker
 
 ```sh
 docker run -e APP_NAME=strapi-app \
@@ -29,30 +27,23 @@ docker run -e APP_NAME=strapi-app \
 
 https://strapi.io/documentation/
 
-## 2. client app
+## 3. client app
 
 ```sh
-docker run \
-    -it \
-    --rm \
-    --name demo-app \
-    --net=host \
-    -v /home/rvion/dev/app-web:/app \
-    --workdir /app \
-    node \
-    bash
+docker build --tag demo .
+docker run --name demo-app \
+           -it \
+           --rm \
+           --net=host \
+           -v $(pwd):/app \
+           demo
 ```
 
-```sh
-npm install
-./node_modules/.bin/parcel ./public/index.html
-```
+---
 
-javascript
-node
-npm: node package manager
+usefull aliases
 
 ```sh
+alias drun1='docker run -it --rm -v $(pwd):/app -w /app --net=host'
 alias drun2='docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):/app -w /app --net=host'
-alias start='drun2 node ./node_modules/.bin/parcel ./public/index.html'
 ```
