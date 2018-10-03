@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { store } from '../state'
+import { store } from '../core/state'
 
 type LoginInfos = {
     username: string

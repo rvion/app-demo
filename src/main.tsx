@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import { observer } from 'mobx-react'
-import { store } from './state'
 import { Page2 } from './pages/page2'
+import { store } from './core/state'
 import { Page1 } from './pages/page1'
 
 @observer
