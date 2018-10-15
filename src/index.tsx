@@ -22,7 +22,7 @@ class Main extends React.Component {
 
         return (
             <div>
-                <h1>app</h1>
+                <h1>test</h1>
                 <button onClick={() => (store.page = 'page1')}>page1</button>
                 <button onClick={() => (store.page = 'page2')}>page2</button>
                 <button onClick={() => (store.page = 'page3')}>page3</button>
