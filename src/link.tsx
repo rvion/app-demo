@@ -7,10 +7,6 @@ export class Link extends React.Component<{
     page: Page,
     label: string,
 }> {
-    constructor(props) {
-        super(props)
-        if (store.beards.length === 0) store.fetchBoards()
-    }
 
     render() {
         const isActive = store.page.name === this.props.page.name

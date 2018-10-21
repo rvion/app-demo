@@ -4,21 +4,21 @@ import { observer } from 'mobx-react'
 
 @observer
 export class ChallengeList extends React.Component {
-    constructor(props) {
+    constructor(props: {}) {
         super(props)
-        if (store.beards.length === 0) store.fetchBoards()
+        store.fetchChallenges()
     }
 
     render() {
         return (
             <div>
-                <h2>Barbes</h2>
-                <button onClick={() => store.fetchBoards()}>Fetch</button>
+                <h2>Challenges</h2>
+                <button onClick={() => store.fetchChallenges(true)}>Updates</button>
                 <ul>
-                    {store.beards.map(beard => {
+                    {store.challenges.map(challenge => {
                         return (
-                            <li key={beard._id}>
-                                <pre>{JSON.stringify(beard, null, 4)}</pre>
+                            <li key={challenge._id}>
+                                <pre>{JSON.stringify(challenge, null, 4)}</pre>
                             </li>
                         )
                     })}

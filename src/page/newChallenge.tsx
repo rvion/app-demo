@@ -1,0 +1,27 @@
+import * as React from 'react'
+import { store } from '../store'
+import { observer } from 'mobx-react'
+
+@observer
+export class Page4 extends React.Component {
+    constructor(props: {}) {
+        super(props)
+        store.fetchFriends()
+    }
+    render() {
+        return (
+            <div>
+                <h2>New challenge</h2>
+                <h3>Select a friend</h3>
+                function that fetches friends list
+                {store.friends.map((friend => {
+                    return (
+                        <div key={friend._id}>
+                            {friend.name}
+                        </div>
+                    )
+                }))}
+            </div>
+        )
+    }
+}

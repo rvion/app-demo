@@ -1,5 +1,13 @@
 import { observable, action } from 'mobx'
 
+export type Friend = {
+    _id: string,
+    name: string
+}
+
+export type Challenge = {
+    _id: string
+}
 export type Page =
     | { name: 'login' }
     | { name: 'logout' }
@@ -9,7 +17,7 @@ export type Page =
     | { name: 'challengeList' }
     | { name: 'challengeDetail', challengeId: string }
 
-function pageToURL(page: Page): string {
+export function pageToURL(page: Page): string {
     if (page.name === 'challengeDetail') return `/challenge/${page.challengeId}`
     if (page.name === 'notFound') return `/404?url=${page.originalURL}`
     return `/${page.name}`
@@ -17,7 +25,7 @@ function pageToURL(page: Page): string {
 // url= http://localhost:1234/foo/bar?test=3
 // window.location.pathanme = "/foo/bar"
 // window.location.search = "?test=3&bar=5"
-function urlToPage(): Page {
+export function urlToPage(): Page {
     const loc = window.location
     // const [query, params]= url.split('?')
     // const segments = url.
@@ -43,7 +51,10 @@ class Store {
     auth: { user: Object; jwt: string } | null = null
 
     @observable
-    beards: { _id: string }[] = []
+    friends: Friend[] = []
+
+    @observable
+    challenges: Challenge[] = []
 
     @action
     login(identifier: string, password: string) {
@@ -51,25 +62,41 @@ class Store {
             type: 'POST',
             url: `http://${window.location.hostname}:1337/auth/local`,
             data: { identifier, password },
-            done: function (auth) {
+            done: (auth: any) => {
                 console.log('authentication success:', { auth })
                 store.auth = auth
             }
         })
     }
 
+
     @action
-    fetchBoards() {
-        if (this.auth == null) return console.warn('not connected')
-        ajax({
-            type: 'GET',
-            url: `http://${window.location.hostname}:1337/beards`,
-            headers: { Authorization: `Bearer ${this.auth.jwt}` },
-            done: beards => {
-                console.log('beard fetch success:', { beards })
-                this.beards = beards
-            }
-        })
+    fetchChallenges(force = true) {
+        if (this.challenges.length > 0 && !force) return console.log('no need to refresh: skipping.')
+        // FIXME: replace by proper implementation
+        this.challenges = [
+            { _id: 'fghjk' }
+        ]
+        return
+    }
+
+    @action
+    fetchFriends(force: Boolean = false) {
+        if (this.friends.length > 0 && !force) return console.log('no need to refresh: skipping.')
+        // FIXME
+        this.friends = [
+            { _id: "fghjkl", name: 'paul' }
+        ]
+        // if (this.auth == null) return console.warn('not connected')
+        // ajax({
+        //     type: 'GET',
+        //     url: `http://${window.location.hostname}:1337/friends`,
+        //     headers: { Authorization: `Bearer ${this.auth.jwt}` },
+        //     done: friends => {
+        //         console.log('beard fetch success:', { friends })
+        //         this.friends = friends
+        //     }
+        // })
     }
 }
 
@@ -82,8 +109,8 @@ export function ajax(options: {
     url: string
     data?: Object
     headers?: Object
-    done: (Object) => any
-    fail?: (any) => any
+    done: (data: Object) => any
+    fail?: (err: any) => any
 }) {
     const opts: any = {
         headers: {
@@ -105,6 +132,7 @@ export function ajax(options: {
         .then(options.done)
         .catch(options.fail || logError)
 }
-function logError(error) {
+
+function logError(error: any) {
     console.log('An error occurred:', error)
 }

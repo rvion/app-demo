@@ -6,7 +6,7 @@ import { store } from './store'
 import { HomePage } from './page1'
 import { Login } from './page/login'
 import { ChallengeList } from './page/challengeList'
-import { Page4 } from './page4'
+import { Page4 } from './page/newChallenge'
 import { Link } from './link';
 
 @observer
