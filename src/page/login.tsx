@@ -9,7 +9,7 @@ type LoginInfos = {
 
 @observer
 export class Login extends React.Component<{}, LoginInfos> {
-    constructor(props) {
+    constructor(props: {}) {
         super(props)
         this.state = {
             username: '',

@@ -85,7 +85,8 @@ class Store {
         if (this.friends.length > 0 && !force) return console.log('no need to refresh: skipping.')
         // FIXME
         this.friends = [
-            { _id: "fghjkl", name: 'paul' }
+            { _id: "fghjkl", name: 'paul' },
+            { _id: "fdzede", name: 'yolo' }
         ]
         // if (this.auth == null) return console.warn('not connected')
         // ajax({
