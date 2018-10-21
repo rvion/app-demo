@@ -6,17 +6,18 @@ import { store } from './store'
 import { Page1 } from './page1'
 import { Page2 } from './page2'
 import { Page3 } from './page3'
+import { Link } from './link';
 
 @observer
 class Main extends React.Component {
     render() {
         let pageWidget: React.ReactNode = '404 page not found'
         let page = store.page
-        if (page === 'page1') {
+        if (page.name === 'home') {
             pageWidget = <Page1 />
-        } else if (page === 'page2') {
+        } else if (page.name === 'login') {
             pageWidget = <Page2 />
-        } else if (page === 'page3') {
+        } else if (page.name === 'challengeList') {
             pageWidget = <Page3 />
         }
 

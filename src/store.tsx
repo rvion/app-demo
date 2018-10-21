@@ -1,8 +1,43 @@
 import { observable, action } from 'mobx'
 
+export type Page =
+    | { name: 'login' }
+    | { name: 'logout' }
+    | { name: 'home' }
+    | { name: 'notFound', originalURL: string }
+    | { name: 'newChallenge' }
+    | { name: 'challengeList' }
+    | { name: 'challengeDetail', challengeId: string }
+
+function pageToURL(page: Page): string {
+    if (page.name === 'challengeDetail') return `/challenge/${page.challengeId}`
+    if (page.name === 'notFound') return `/404?url=${page.originalURL}`
+    return `/${page.name}`
+}
+// url= http://localhost:1234/foo/bar?test=3
+// window.location.pathanme = "/foo/bar"
+// window.location.search = "?test=3&bar=5"
+function urlToPage(): Page {
+    const loc = window.location
+    // const [query, params]= url.split('?')
+    // const segments = url.
+    if (loc.pathname === '/login') return { name: 'login' }
+    return { name: 'home' }
+}
+
 class Store {
     @observable
-    page: 'page1' | 'page2' | 'page3' = 'page1'
+    page: Page = { name: "home" }
+
+    constructor() {
+        // const page = urlToPage(window.location.pppppp)
+        // this.page=page
+    }
+    @action
+    goToPage(page: Page) {
+        this.page = page
+        // window.history.pushState()
+    }
 
     @observable
     auth: { user: Object; jwt: string } | null = null
@@ -16,7 +51,7 @@ class Store {
             type: 'POST',
             url: `http://${window.location.hostname}:1337/auth/local`,
             data: { identifier, password },
-            done: function(auth) {
+            done: function (auth) {
                 console.log('authentication success:', { auth })
                 store.auth = auth
             }
