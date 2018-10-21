@@ -18,12 +18,27 @@ label {
     background-color: lightblue;
 }
 
+html,
+body,
+#root{
+    height: 100%
+}
 .appLayout{
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
-.appLayout .layoutContent {
-    flex-grow: 1
+.appLayout .layoutContentPane {
+    flex-grow: 1;
+    position:relative;
+    overflow: auto;
+}
+.layoutContent{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
 }
 .navigationPannel {
     height: 40px;

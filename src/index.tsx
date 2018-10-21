@@ -29,8 +29,10 @@ class Main extends React.Component {
                 <div className="layoutHeader">
                     <h1>Karma</h1>
                 </div>
-                <div className="layoutContent">
-                    {pageWidget}
+                <div className="layoutContentPane">
+                    <div className="layoutContent">
+                        {pageWidget}
+                    </div>
                 </div>
                 <div className="layoutMenu">
                     <div className="navigationPannel">
