@@ -21,13 +21,21 @@ class Main extends React.Component {
         }
 
         return (
-            <div>
-                <h1>test</h1>
-                <button onClick={() => (store.page = 'page1')}>page1</button>
-                <button onClick={() => (store.page = 'page2')}>page2</button>
-                <button onClick={() => (store.page = 'page3')}>page3</button>
-                {pageWidget}
-            </div>
+            <div className="appLayout">
+                <div className="layoutHeader">
+                    <h1>Karma</h1>
+                </div>
+                <div className="layoutContent">
+                    {pageWidget}
+                </div>
+                <div className="layoutMenu">
+                    <div className="navigationPannel">
+                        <Link page={{ name: 'home' }} label="accueil" />
+                        <Link page={{ name: 'login' }} label="Login" />
+                        <Link page={{ name: 'challengeList' }} label="page3" />
+                    </div >
+                </div >
+            </div >
         )
     }
 }

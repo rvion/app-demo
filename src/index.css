@@ -15,3 +15,20 @@ label {
     border-radius: 10px;
     background-color: lightblue;
 }
+
+.appLayout{
+    display: flex;
+    flex-direction: column;
+}
+.appLayout .layoutContent {
+    flex-grow: 1
+}
+.navigationPannel {
+    height: 40px;
+    display: flex;
+    flex-direction: horizontal;
+}
+.navigationPannel button{
+    flex-grow: 1;
+}
+
