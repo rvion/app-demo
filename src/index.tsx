@@ -6,6 +6,7 @@ import { store } from './store'
 import { HomePage } from './page1'
 import { Page2 } from './page2'
 import { Page3 } from './page3'
+import { Page4 } from './page4'
 import { Link } from './link';
 
 @observer
@@ -19,6 +20,8 @@ class Main extends React.Component {
             pageWidget = <Page2 />
         } else if (page.name === 'challengeList') {
             pageWidget = <Page3 />
+        } else if (page.name === 'newChallenge') {
+            pageWidget = <Page4 />
         }
 
         return (
