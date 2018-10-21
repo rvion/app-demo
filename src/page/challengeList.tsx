@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { store } from './store'
+import { store } from '../store'
 import { observer } from 'mobx-react'
 
 @observer
-export class Page3 extends React.Component {
+export class ChallengeList extends React.Component {
     constructor(props) {
         super(props)
         if (store.beards.length === 0) store.fetchBoards()

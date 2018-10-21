@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { store } from './store'
+import { store } from '../store'
 import { observer } from 'mobx-react'
 
 type LoginInfos = {
@@ -8,7 +8,7 @@ type LoginInfos = {
 }
 
 @observer
-export class Page2 extends React.Component<{}, LoginInfos> {
+export class Login extends React.Component<{}, LoginInfos> {
     constructor(props) {
         super(props)
         this.state = {
