@@ -31,20 +31,6 @@ https://strapi.io/documentation/
 
 ```sh
 docker build --tag karma-client .
-docker run --name karma-client \
-           -it \
-           --rm \
-           --net=host \
-           -v $(pwd):/app \
-           karma-client
+./start.sh
 ```
 
----
-
-usefull aliases
-
-```sh
-alias drun1='docker run -it --rm -v $(pwd):/app -w /app --net=host'
-alias drun2='docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):/app -w /app --net=host'
-alias drun3='docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):/app -w /app -p 1234:1234 -p 1235:1235 --name karma-client karma-client parcel serve --hmr-port 1235 ./src/index.html'
-```
