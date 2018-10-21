@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { observer } from 'mobx-react'
 import { store } from './store'
 
-import { Page1 } from './page1'
+import { HomePage } from './page1'
 import { Page2 } from './page2'
 import { Page3 } from './page3'
 import { Link } from './link';
@@ -14,7 +14,7 @@ class Main extends React.Component {
         let pageWidget: React.ReactNode = '404 page not found'
         let page = store.page
         if (page.name === 'home') {
-            pageWidget = <Page1 />
+            pageWidget = <HomePage />
         } else if (page.name === 'login') {
             pageWidget = <Page2 />
         } else if (page.name === 'challengeList') {

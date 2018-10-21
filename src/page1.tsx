@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { store } from './store';
 
-export class Page1 extends React.Component {
+export class HomePage extends React.Component {
     render() {
         return (
             <div>
