@@ -75,7 +75,11 @@ class Store {
         if (this.challenges.length > 0 && !force) return console.log('no need to refresh: skipping.')
         // FIXME: replace by proper implementation
         this.challenges = [
-            { _id: 'fghjk' }
+            {
+                _id: 'Challenge 1',
+                description: "homelesscaring",
+                time: "60 minutes"
+            }
         ]
         return
     }
@@ -85,8 +89,8 @@ class Store {
         if (this.friends.length > 0 && !force) return console.log('no need to refresh: skipping.')
         // FIXME
         this.friends = [
-            { _id: "fghjkl", name: 'paul' },
-            { _id: "fdzede", name: 'yolo' }
+            { _id: "fghjkl", name: 'Amélie' },
+            { _id: "fdzede", name: 'Corentin' }
         ]
         // if (this.auth == null) return console.warn('not connected')
         // ajax({

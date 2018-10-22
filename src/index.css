@@ -1,16 +1,18 @@
 h1 {
-    background: rgb(94, 94, 190);
     display: block;
     height: 100%;
 }
+
 label {
     display: block;
 }
+
 input,
 label {
     line-height: 30px;
     margin: 2px;
 }
+
 .card {
     border: 1px solid black;
     margin: 2px;
@@ -20,32 +22,37 @@ label {
 
 html,
 body,
-#root{
+#root {
     height: 100%
 }
-.appLayout{
+
+.appLayout {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
+
 .appLayout .layoutContentPane {
     flex-grow: 1;
-    position:relative;
+    position: relative;
     overflow: auto;
 }
-.layoutContent{
+
+.layoutContent {
     position: absolute;
-    top:0;
+    top: 0;
     bottom: 0;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
 }
+
 .navigationPannel {
     height: 40px;
     display: flex;
     flex-direction: horizontal;
 }
-.navigationPannel button{
+
+.navigationPannel button {
     flex-grow: 1;
 }
 

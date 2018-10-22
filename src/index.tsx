@@ -36,9 +36,9 @@ class Main extends React.Component {
                 </div>
                 <div className="layoutMenu">
                     <div className="navigationPannel">
-                        <Link page={{ name: 'home' }} label="accueil" />
-                        <Link page={{ name: 'login' }} label="Login" />
-                        <Link page={{ name: 'challengeList' }} label="page3" />
+                        <Link page={{ name: 'newChallenge' }} label="Nouveau challenge" />
+                        {/*page={{ name: 'login' }} label="Login" />*/}
+                        <Link page={{ name: 'challengeList' }} label="Challenge en cours" />
                     </div >
                 </div >
             </div >

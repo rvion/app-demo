@@ -27,19 +27,29 @@ export class Page4 extends React.Component<{}, State> {
                 <pre>{JSON.stringify(this.state, null, 4)}</pre>
 
                 <h3>Select a friend</h3>
-                <select value='tre' onChange={(ev) => this.setState({ friendId: ev.target.value })}>
-                    <option value="tre">erthj</option>
-                    <option value="tree">dfghjkl</option>
-                    <option value="treee">fghjkl</option>
+                <select value='' onChange={(ev) => this.setState({ friendId: ev.target.value })}>
+                    <option value="12069584">Corentin</option>
+                    <option value="01923884">Samy</option>
+                    <option value="22111994">Amélie</option>
+                    <option value="07071995">Eric</option>
                 </select>
 
-                {store.friends.map((friend => {
+                {/*{store.friends.map((friend => {
                     return (
                         <div key={friend._id}>
                             {friend.name}
                         </div>
                     )
                 }))}
+
+                 <h3>Select a challenge</h3>
+                <select value='tre' onChange={(ev) => this.setState({ challengeId: ev.target.value })}>
+                    <option value="tra">erthjty</option>
+                    <option value="traa">dfghjklty</option>
+                    <option value="traaa">fghjklty</option>
+                </select>*/}
+
+
 
 
 
