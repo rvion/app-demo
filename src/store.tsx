@@ -1,143 +1,101 @@
 import { observable, action } from 'mobx'
 
-export type Friend = {
-    _id: string,
+export type UserId = string
+export type User = {
+    id: UserId
     name: string
+    friends: string[]
 }
-
+export type ChallengeId = string
 export type Challenge = {
-    _id: string
+    id: ChallengeId
+    description: string
+    creator: UserId
+    receiver: UserId
+    createdAt: number
+    duration: number
+    success: boolean
 }
 export type Page =
-    | { name: 'login' }
-    | { name: 'logout' }
-    | { name: 'home' }
-    | { name: 'notFound', originalURL: string }
     | { name: 'newChallenge' }
-    | { name: 'challengeList' }
-    | { name: 'challengeDetail', challengeId: string }
-
-export function pageToURL(page: Page): string {
-    if (page.name === 'challengeDetail') return `/challenge/${page.challengeId}`
-    if (page.name === 'notFound') return `/404?url=${page.originalURL}`
-    return `/${page.name}`
-}
-// url= http://localhost:1234/foo/bar?test=3
-// window.location.pathanme = "/foo/bar"
-// window.location.search = "?test=3&bar=5"
-export function urlToPage(): Page {
-    const loc = window.location
-    // const [query, params]= url.split('?')
-    // const segments = url.
-    if (loc.pathname === '/login') return { name: 'login' }
-    return { name: 'home' }
-}
+    | { name: 'challengeIDo' }
+    | { name: 'challengeISent' }
 
 class Store {
     @observable
-    page: Page = { name: "home" }
+    page: Page = { name: 'challengeIDo' }
 
-    constructor() {
-        // const page = urlToPage(window.location.pppppp)
-        // this.page=page
-    }
     @action
     goToPage(page: Page) {
         this.page = page
-        // window.history.pushState()
     }
 
     @observable
     auth: { user: Object; jwt: string } | null = null
 
     @observable
-    friends: Friend[] = []
+    challenges: Map<ChallengeId, Challenge> = new Map([
+        [
+            'c1',
+            {
+                id: 'c1',
+                description: 'test',
+                creator: 'u2',
+                receiver: 'u1',
+                createdAt: Date.now() - 2000,
+                duration: 30000,
+                success: false
+            }
+        ]
+    ])
 
     @observable
-    challenges: Challenge[] = []
+    users: Map<UserId, User> = new Map([
+        ['u1', { id: 'u1', name: 'U1', friends: ['u2'] }],
+        ['u2', { id: 'u2', name: 'U2', friends: ['u1'] }],
+        ['u3', { id: 'u3', name: 'U3', friends: [] }]
+    ])
+
+    @observable
+    currentUserId: UserId | null = 'u1'
 
     @action
-    login(identifier: string, password: string) {
-        ajax({
-            type: 'POST',
-            url: `http://${window.location.hostname}:1337/auth/local`,
-            data: { identifier, password },
-            done: (auth: any) => {
-                console.log('authentication success:', { auth })
-                store.auth = auth
-            }
-        })
+    createChallenge(infos: {
+        description: string
+        creator: UserId
+        receiver: UserId
+        duration: number
+    }) {
+        const newChallenge: Challenge = {
+            id: String(Math.random()),
+            description: infos.description,
+            creator: infos.creator,
+            receiver: infos.receiver,
+            createdAt: Date.now(),
+            duration: infos.duration,
+            success: false
+        }
+        this.challenges.set(newChallenge.id, newChallenge)
     }
 
-
     @action
-    fetchChallenges(force = true) {
-        if (this.challenges.length > 0 && !force) return console.log('no need to refresh: skipping.')
-        // FIXME: replace by proper implementation
-        this.challenges = [
-            {
-                _id: 'Challenge 1',
-                description: "homelesscaring",
-                time: "60 minutes"
-            }
-        ]
-        return
+    finishChallenge(challenge: Challenge) {
+        challenge.success = true
     }
 
     @action
-    fetchFriends(force: Boolean = false) {
-        if (this.friends.length > 0 && !force) return console.log('no need to refresh: skipping.')
-        // FIXME
-        this.friends = [
-            { _id: "fghjkl", name: 'Amélie' },
-            { _id: "fdzede", name: 'Corentin' }
-        ]
-        // if (this.auth == null) return console.warn('not connected')
-        // ajax({
-        //     type: 'GET',
-        //     url: `http://${window.location.hostname}:1337/friends`,
-        //     headers: { Authorization: `Bearer ${this.auth.jwt}` },
-        //     done: friends => {
-        //         console.log('beard fetch success:', { friends })
-        //         this.friends = friends
-        //     }
-        // })
+    login(uid: string, _password: string) {
+        if (this.currentUserId != null) return
+        this.currentUserId = uid
+        const user = this.users.get(uid)
+        if (user == null) {
+            this.users.set(uid, {
+                id: uid,
+                name: uid,
+                friends: []
+            })
+        }
     }
 }
 
 export const store = new Store()
-
-// helper function to ease copy-pasting code from strapi-doc
-// like in page https://strapi.io/documentation/guides/authentication.html#register-a-new-user
-export function ajax(options: {
-    type: 'POST' | 'GET'
-    url: string
-    data?: Object
-    headers?: Object
-    done: (data: Object) => any
-    fail?: (err: any) => any
-}) {
-    const opts: any = {
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            ...(options.headers || {})
-        },
-        cache: 'no-cache',
-        credentials: 'include'
-    }
-    if (options.data) opts.body = JSON.stringify(options.data)
-    if (options.type) opts.method = options.type
-    console.log('[ajax] fetching', options.url, opts)
-    fetch(options.url, opts)
-        .then(response => {
-            //www.tjvantoll.com/2015/09/13/fetch-and-errors/
-            https: if (!response.ok) throw Error(response.statusText)
-            return response.json()
-        })
-        .then(options.done)
-        .catch(options.fail || logError)
-}
-
-function logError(error: any) {
-    console.log('An error occurred:', error)
-}

@@ -30,7 +30,12 @@ export class Login extends React.Component<{}, LoginInfos> {
         // else, if not connected,
         // show the connection widget
         return (
-            <div>
+            <form
+                className="loginPage"
+                onSubmit={ev => {
+                    ev.preventDefault()
+                }}
+            >
                 <h2>Page2: Login</h2>
                 <label>
                     username
@@ -49,11 +54,12 @@ export class Login extends React.Component<{}, LoginInfos> {
                     />
                 </label>
                 <button
+                    type="submit"
                     onClick={() => store.login(this.state.username, this.state.password)}
                 >
                     Log in as {this.state.username}
                 </button>
-            </div>
+            </form>
         )
     }
 }

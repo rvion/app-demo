@@ -1,0 +1,122 @@
+* {
+    font-family: "roboto"
+}
+
+h1 {
+    display: block;
+    height: 100%;
+}
+
+label {
+    display: block;
+}
+
+input,
+label {
+    line-height: 30px;
+    margin: 2px;
+}
+
+.card {
+    border: 1px solid black;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+html,
+body,
+#root {
+    height: 100%
+}
+
+.appLayout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.appLayout .layoutContentPane {
+    flex-grow: 1;
+    position: relative;
+    overflow: auto;
+}
+
+.layoutContent {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.navigationPannel {
+    height: 40px;
+    display: flex;
+    flex-direction: horizontal;
+}
+
+.navigationPannel button {
+    flex-grow: 1;
+}
+
+
+button {
+    padding: 10px;
+    background: #eee;
+    border-radius: 5px;
+    border: 2px solid gray;
+    padding: 5px;
+}
+
+.active {
+    background: rgb(163, 207, 224);
+}
+
+input,
+select {
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+body {
+    background: url("/pipes.png")
+}
+
+.loginPage {
+    background: #fafafa;
+    box-shadow: 0 10px 2px 8px gray;
+    border: 1px solid black;
+    height: 80%;
+    margin: 10%;
+}
+
+.challengeCard {
+    margin: 20px;
+    background: #fafafa;
+    box-shadow: 0 5px 20px 2px #6aa2c3;
+    border: 1px solid black;
+}
+
+.challengeCard .creator {
+    float: right;
+    color: gray;
+}
+
+.timesup {
+    color: red
+}
+
+.layoutHeader {
+    text-align: center;
+    color: #fafafa;
+    background: black
+}
+
+.layoutMenu button {
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-left: 1px solid lightgray;
+}
