@@ -6,12 +6,12 @@ import { ChallengeCard } from './challengeCard'
 @observer
 export class ChallengeIDo extends React.Component {
     render() {
-        const myChallenges = Array.from(store.challenges.values()).filter(
+        const myChallenges = Array.from(store.mychallenges.values()).filter(
             c => c.receiver === store.currentUserId
         )
         return (
             <div>
-                <h2>Challenges</h2>
+                <h2>My Challenges</h2>
                 {myChallenges.map(c => {
                     return <ChallengeCard challenge={c} />
                 })}

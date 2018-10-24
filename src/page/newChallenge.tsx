@@ -29,7 +29,7 @@ export class NewChallenge extends React.Component<P, S> {
                 <h2>New challenge</h2>
 
                 <label>
-                    <span className="label">friend</span>
+                    <span className="label">Friend </span>
                     <select
                         value={this.state.friendId || ''}
                         onChange={ev => this.setState({ friendId: ev.target.value })}
@@ -45,6 +45,7 @@ export class NewChallenge extends React.Component<P, S> {
                     </select>
                 </label>
                 <button
+                    className="btn btn-primary"
                     onClick={() => {
                         store.createChallenge({
                             description: "'",

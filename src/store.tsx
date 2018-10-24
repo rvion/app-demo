@@ -39,8 +39,24 @@ class Store {
             'c1',
             {
                 id: 'c1',
-                description: 'test',
-                creator: 'u2',
+                description: 'Homelesscaring',
+                creator: 'Amélie',
+                receiver: 'Corentin',
+                createdAt: Date.now() - 2000,
+                duration: 30000,
+                success: false
+            }
+        ]
+    ])
+
+    @observable
+    mychallenges: Map<ChallengeId, Challenge> = new Map([
+        [
+            'c2',
+            {
+                id: 'c2',
+                description: 'Homelesscaring',
+                creator: 'Corentin',
                 receiver: 'u1',
                 createdAt: Date.now() - 2000,
                 duration: 30000,
@@ -51,9 +67,10 @@ class Store {
 
     @observable
     users: Map<UserId, User> = new Map([
-        ['u1', { id: 'u1', name: 'U1', friends: ['u2'] }],
-        ['u2', { id: 'u2', name: 'U2', friends: ['u1'] }],
-        ['u3', { id: 'u3', name: 'U3', friends: [] }]
+        ['u1', { id: 'u1', name: 'Amélie', friends: ['u2'] }],
+        ['u2', { id: 'u2', name: 'Corentin', friends: ['u1'] }],
+        ['u3', { id: 'u3', name: 'Samy', friends: [] }],
+        ['u4', { id: 'u4', name: 'Eric', friends: ['u1'] }]
     ])
 
     @observable

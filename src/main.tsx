@@ -6,6 +6,7 @@ import { store } from './store'
 import { Login } from './page/login'
 import { ChallengeIDo } from './page/challengeIDo'
 import { NewChallenge } from './page/newChallenge'
+import { ChallengeISent } from './page/challengeISent'
 import { Link } from './link'
 
 @observer
@@ -20,7 +21,7 @@ class Main extends React.Component {
         if (page.name === 'challengeIDo') {
             pageWidget = <ChallengeIDo />
         } else if (page.name === 'challengeISent') {
-            pageWidget = <NewChallenge />
+            pageWidget = <ChallengeISent />
         } else if (page.name === 'newChallenge') {
             pageWidget = <NewChallenge />
         }
@@ -35,12 +36,9 @@ class Main extends React.Component {
                 </div>
                 <div className="layoutMenu">
                     <div className="navigationPannel">
-                        <Link page={{ name: 'newChallenge' }} label="Nouveau challenge" />
-                        <Link
-                            page={{ name: 'challengeIDo' }}
-                            label="Challenge en cours"
-                        />
-                        <Link page={{ name: 'challengeISent' }} label="Friends" />
+                        <Link page={{ name: 'newChallenge' }} label="New challenge" />
+                        <Link page={{ name: 'challengeIDo' }} label="My Challenges" />
+                        <Link page={{ name: 'challengeISent' }} label="Challenge sent" />
                     </div>
                 </div>
             </div>
