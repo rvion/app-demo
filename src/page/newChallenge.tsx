@@ -26,7 +26,7 @@ export class NewChallenge extends React.Component<P, S> {
 
         return (
             <div>
-                <h2>New challenge</h2>
+                <h2>New deed</h2>
 
                 <label>
                     <span className="label">Friend </span>
@@ -45,13 +45,13 @@ export class NewChallenge extends React.Component<P, S> {
                     </select>
                 </label>
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-success"
                     onClick={() => {
                         store.createChallenge({
-                            description: "'",
+                            description: 'Buy a meal for a homeless person',
                             creator: uid,
                             receiver: uid,
-                            duration: 10000
+                            duration: 2400000
                         })
                     }}
                 >

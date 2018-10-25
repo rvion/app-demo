@@ -11,7 +11,7 @@ export class ChallengeIDo extends React.Component {
         )
         return (
             <div>
-                <h2>My Challenges</h2>
+                <h2>My Deeds</h2>
                 {myChallenges.map(c => {
                     return <ChallengeCard challenge={c} />
                 })}

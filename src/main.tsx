@@ -29,16 +29,16 @@ class Main extends React.Component {
         return (
             <div className="appLayout">
                 <div className="layoutHeader">
-                    <h1>Karma</h1>
+                    <img src="karma.png" height="40.938px" width="100px" />
                 </div>
                 <div className="layoutContentPane">
                     <div className="layoutContent">{pageWidget}</div>
                 </div>
                 <div className="layoutMenu">
                     <div className="navigationPannel">
-                        <Link page={{ name: 'newChallenge' }} label="New challenge" />
-                        <Link page={{ name: 'challengeIDo' }} label="My Challenges" />
-                        <Link page={{ name: 'challengeISent' }} label="Challenge sent" />
+                        <Link page={{ name: 'newChallenge' }} label="New Deed" />
+                        <Link page={{ name: 'challengeIDo' }} label="My Deeds" />
+                        <Link page={{ name: 'challengeISent' }} label="Deeds sent" />
                     </div>
                 </div>
             </div>

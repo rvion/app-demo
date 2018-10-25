@@ -20,23 +20,23 @@ export class ChallengeCard extends React.Component<P1, S1> {
     }
 
     finished = () => {
-        return <div className="timesup">TIMES UP</div>
+        return (
+            <div className="timesup">
+                Timeout, restore your Karma, perform this: treat your friends for lunch
+            </div>
+        )
     }
     render() {
         const c = this.props.challenge
         if (c == null) return 'challenge not found'
-        const remainingTime = (c.createdAt + c.duration - Date.now()) / 1000
-        const remainingSeconds = Math.round(remainingTime)
+        const remainingTime = (c.createdAt + c.duration - Date.now()) / 100000
+        const remaininghours = Math.round(remainingTime)
         return (
             <div className="card">
-                <img className="card-img-top" src="/IMG.jpg" alt="Card image cap" />
+                <img className="card-img-top" src="/give.png" alt="Card image cap" />
                 <h5 className="card-title">{c.description}</h5>
                 <h6 className="creator">by {c.creator}</h6>
-                {remainingTime < 0 ? (
-                    this.finished()
-                ) : (
-                    <h2>{remainingSeconds} seconds left</h2>
-                )}
+                {remainingTime < 0 ? this.finished() : <h2>{remaininghours}h</h2>}
                 {/* <pre>{JSON.stringify(c, null, 4)}</pre> */}
             </div>
         )

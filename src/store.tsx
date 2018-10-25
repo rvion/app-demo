@@ -39,11 +39,11 @@ class Store {
             'c1',
             {
                 id: 'c1',
-                description: 'Homelesscaring',
-                creator: 'Amélie',
-                receiver: 'Corentin',
+                description: 'Send a postcard to your grandmother',
+                creator: 'u1',
+                receiver: 'u2',
                 createdAt: Date.now() - 2000,
-                duration: 30000,
+                duration: 1000,
                 success: false
             }
         ]
@@ -55,11 +55,11 @@ class Store {
             'c2',
             {
                 id: 'c2',
-                description: 'Homelesscaring',
+                description: 'Buy a meal for a homeless person',
                 creator: 'Corentin',
                 receiver: 'u1',
                 createdAt: Date.now() - 2000,
-                duration: 30000,
+                duration: 300000,
                 success: false
             }
         ]

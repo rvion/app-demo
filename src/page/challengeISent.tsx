@@ -11,7 +11,7 @@ export class ChallengeISent extends React.Component {
         )
         return (
             <div>
-                <h2>Challenge sent</h2>
+                <h2>Deeds sent</h2>
                 {myChallenges.map(c => {
                     return <ChallengeCard challenge={c} />
                 })}
