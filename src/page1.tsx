@@ -16,7 +16,7 @@ export class Page1 extends React.Component {
 }
 
 type CardData = {
-    name: string
+    name: string,
     photo: string
 }
 
